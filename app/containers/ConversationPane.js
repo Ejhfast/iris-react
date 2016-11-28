@@ -14,10 +14,9 @@ class ConversationPane extends Component {
     componentDidUpdate() {
         // Notify Iris when the message list is updated
         // moved this out of the reducer
-        const { messages, id, state } = this.props;
-        console.log(this.props.state);
+        const { messages, state } = this.props;
         if (messages.length > 0 && messages[messages.length - 1].origin !== 'iris') {
-            postMessages(messages, id, state);
+            postMessages(messages, state);
         }
     }
 
@@ -30,7 +29,6 @@ class ConversationPane extends Component {
 
 ConversationPane.propTypes = {
     messages: proptypes.messagesType,
-    id: PropTypes.number,
     state: PropTypes.string,
     history: PropTypes.arrayOf(proptypes.messagesType)
 };
@@ -38,7 +36,6 @@ ConversationPane.propTypes = {
 const mapStateToProps = (state) => ({
     messages: state.conversation.messages,
     history: state.conversation.history,
-    id: state.conversation.id,
     state: state.conversation.state
 });
 
