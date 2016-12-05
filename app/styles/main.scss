@@ -90,9 +90,43 @@ body{
     font-size:1.4em;
   }
   .snippet{
-    font-weight:200;
+    font-weight:400;
     padding:10px 20px;
+		color: #888;
   }
+	.variableTable{
+		margin-top:10px;
+		border-top: 1px solid #eee;
+		.title{
+			font-weight:600;
+			margin:10px 0px;
+		}
+		ul{
+			float:left;
+			width:100%;
+			padding:0;
+			margin:0;
+		}
+		li{
+			width:100%;
+			float: left;
+			clear:both;
+			text-align:left;
+			line-height:1.4em;
+			color:#888;
+			span.half{
+				float:left;
+				width:50%;
+			}
+			span.name{
+				font-family: courier;
+				font-size:.9em;
+				color:#444;
+			}
+		}
+		font-weight:400;
+		padding:10px 20px;
+	}
   span.code{
     /*padding:2px 4px;*/
     font-family: courier;

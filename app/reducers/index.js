@@ -3,8 +3,8 @@ import { combineReducers } from 'redux';
 import * as types from '../actions/types';
 
 let genId = 0;
-const appendMessage = (messages, text, origin = 'user', type = null) => {
-    return [...messages, {'origin': origin, 'text': text, 'id': genId++, 'state': type}];
+const appendMessage = (messages, text, origin = 'user', type = null, arg = null) => {
+    return [...messages, {'origin': origin, 'text': text, 'id': genId++, 'state': type, 'arg': arg}];
 };
 
 const conversation = (state = {'history': [], 'messages': [], 'state': 'START'}, action) => {
@@ -15,7 +15,11 @@ const conversation = (state = {'history': [], 'messages': [], 'state': 'START'},
         case types.ADD_SERVER_MESSAGE:
             let newMessages = messages;
             for (const m of action.text) {
-                newMessages = appendMessage(newMessages, m, 'iris', action.state);
+                let arg = null;
+                if (action.arg !== undefined) {
+                    arg = action.arg;
+                }
+                newMessages = appendMessage(newMessages, m, 'iris', action.state, arg);
             }
             if (action.state === 'START') {
                 return { history: [...history, newMessages], messages: [], state: 'START' };
@@ -26,8 +30,18 @@ const conversation = (state = {'history': [], 'messages': [], 'state': 'START'},
     }
 };
 
+const variables = (state = [], action) => {
+    switch (action.type) {
+        case types.UPDATE_VARIABLES:
+            return action.variables;
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
     conversation,
+    variables,
     routing
 });
 

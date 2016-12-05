@@ -5,9 +5,14 @@ export const messageType = {
     origin: PropTypes.string,
 };
 
-const messageTypeArray = PropTypes.shape({
-    text: PropTypes.string,
+export const visualMessageType = {
+    content: PropTypes.string,
     origin: PropTypes.string,
-});
+};
 
-export const messagesType = PropTypes.arrayOf(messageTypeArray);
+// const messageTypeArray = PropTypes.shape({
+//     text: PropTypes.string,
+//     origin: PropTypes.string,
+// });
+
+export const messagesType = PropTypes.arrayOf(PropTypes.any);

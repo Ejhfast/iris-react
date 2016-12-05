@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Conversation from '../components/Conversation';
 import InputBox from './InputBox';
-import postMessages from '../api_calls/python';
+import { postMessages, getVariables } from '../api_calls/python';
 import * as proptypes from '../proptypes/types';
 
 const flatten = list => list.reduce(
@@ -10,6 +10,11 @@ const flatten = list => list.reduce(
 );
 
 class ConversationPane extends Component {
+
+    componentDidMount() {
+        console.log('hello');
+        getVariables();
+    }
 
     componentDidUpdate() {
         // Notify Iris when the message list is updated
