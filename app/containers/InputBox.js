@@ -9,7 +9,7 @@ let InputBox = ({ dispatch }) =>
     <div className="input_box">
         <form onSubmit={e => {
             e.preventDefault();
-            dispatch(addMessage({'user': 'user', 'text': input.value}));
+            dispatch(addMessage({'origin': 'user', 'text': [input.value] }));
             input.value = '';
         }}>
             <input type="text" placeholder="your message here" ref={node => {input = node;}}></input>

@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import Message from './Message';
 import VisualMessage from './VisualMessage';
 import * as proptypes from '../proptypes/types';
+// import SemanticView from '../components/SemanticView';
 
-let messageDOM;
 
 class Conversation extends Component {
 
-    componentDidUpdate() {
-        messageDOM.scrollTop = messageDOM.scrollHeight;
-    }
-
     render = () =>
-        <div className="content_box" id="message_pane" ref={(node) => { messageDOM = node; }}>
+        <div className="innerConversation">
+            <div className="title">{ this.props.title }</div>
             {this.props.messages.map(message => {
                 let content;
                 console.log(message);
@@ -25,11 +22,11 @@ class Conversation extends Component {
                 return content;
             })}
         </div>;
-
 }
 
 Conversation.propTypes = {
-    messages: proptypes.messagesType
+    messages: proptypes.messagesType,
+    title: PropTypes.any
 };
 
 export default Conversation;

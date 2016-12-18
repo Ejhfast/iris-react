@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import * as _ from 'lodash';
 
 let RightPane = ({ variables }) =>
     <div className="right_pane">
@@ -8,13 +9,18 @@ let RightPane = ({ variables }) =>
         <div className="variableTable">
             <div className="title">Current Variables</div>
             <ul>
-              { variables.map(v => <li><span className="half name">{ v }</span><span className="half">array</span></li>) }
+              { _.map(_.sortBy(variables, (v) => {
+                  return v.order;
+              }),
+                (x) => {
+                    return <li><span className="half name">{ x.name }</span><span className="half">{ x.value }</span></li>;
+                })}
             </ul>
         </div>
     </div>;
 
 RightPane.propTypes = {
-    variables: PropTypes.arrayOf(PropTypes.string),
+    variables: PropTypes.arrayOf(PropTypes.any),
 };
 
 const mapStateToProps = (state) => ({
