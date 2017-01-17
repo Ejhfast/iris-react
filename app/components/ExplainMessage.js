@@ -1,11 +1,11 @@
 import React from 'react';
 import * as proptypes from '../proptypes/types';
 
-const Message = ({ origin, text, hidden }) =>
+const ExplainMessage = ({ origin, text, hidden }) =>
     <div className = {origin === 'iris' ? 'message left' : 'message right'} style={hidden === true ? {display: 'none'} : {}}>
-        <div className = "bubble"> {text} </div>
+        <div className = "bubble explain"> {text} </div>
     </div>;
 
-Message.propTypes = proptypes.messageType;
+ExplainMessage.propTypes = proptypes.messageType;
 
-export default Message;
+export default ExplainMessage;

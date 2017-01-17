@@ -13,3 +13,10 @@ export function addMessage(message) {
         ...message
     };
 }
+
+export function hideConversation(id) {
+    return {
+        type: types.HIDE_CONVERSATION,
+        id
+    };
+}

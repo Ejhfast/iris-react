@@ -8,6 +8,22 @@ import configureStore from './store/configureStore';
 import Root from './containers/Root';
 import './styles/main.scss';
 
+function getQueryParams(qs) {
+    const qs_ = qs.split('+').join(' ');
+
+    let params = {};
+    let tokens;
+    const re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs_)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+
+const query = getQueryParams(document.location.search);
+console.log(query);
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);

@@ -61,6 +61,20 @@ body{
    background-color:#efefef;
    color:black;
   }
+	.message.left .bubble.data{
+		width:100%;
+		font-size:.9em;
+		// background-color: #fff;
+		// border:1px solid #ccc;
+		pre{
+			overflow-x: scroll;
+		}
+	}
+	.message.left .bubble.explain{
+		background-color: #efefef;
+		font-style: italic;
+		// color: #eee;
+	}
   .input_box{
     position:absolute;
     height:40px;
@@ -143,6 +157,7 @@ body{
 		text-align: center;
 		color:#ccc;
 		margin:20px 0px;
+		cursor:pointer;
 	}
 }
 
@@ -164,4 +179,11 @@ li.title{
 }
 .clear{
 	clear:both;
+}
+
+span.normal_text, span.iris_arg{
+	margin-right:4px;
+}
+span.iris_arg{
+	font-weight:800;
 }
