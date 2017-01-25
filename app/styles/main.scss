@@ -25,7 +25,7 @@ body{
   }
   .content_box{
     position:absolute;
-    bottom:40px;
+    bottom:75px;
     top:0px;
     width:96%;
     padding:20px 2% 0px 2%;
@@ -81,6 +81,19 @@ body{
     bottom:0px;
     width:98%;
   }
+	.prediction_strip{
+		position:absolute;
+		height:15px;
+		padding: 10px 0px;
+		bottom:40px;
+		width:100%;
+		border-top:1px solid #ddd;
+		span.prediction{
+			margin:5px 13px 0px 13px;
+			color:#999;
+		}
+		overflow-x:scroll;
+	}
   .input_box input[type="text"]{
    width:100%;
    /*margin:20px 0px;*/

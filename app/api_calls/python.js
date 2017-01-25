@@ -13,6 +13,25 @@ export const postMessages = (messages, state, conversation) => {
     .then(json => {
         dispatch(json);
         dispatch({'type': 'UPDATE_VARIABLES', 'variables': json.variables});
+    })
+    .then(() => {
+        dispatch({'type': 'UPDATE_PREDICTIONS', 'predictions': [] });
+    });
+};
+
+
+export const updateHint = (text) => {
+    fetch('http://localhost:8000/hint', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({text})
+    })
+    .then(response => response.json())
+    .then(json => {
+        console.log(json);
+        dispatch({'type': 'UPDATE_PREDICTIONS', 'predictions': json.predictions});
     });
 };
 

@@ -40,6 +40,9 @@ const conversation = (state = {'history': [], 'currentConvo': { 'messages': [], 
         case types.ADD_MESSAGE:
             return { history, currentConvo: appendMessagesConvo(currentConvo, action), 'state': state.state };
         case types.ADD_SERVER_MESSAGE:
+            if (action.text.length === 0) {
+                return state;
+            }
             newConvo = appendMessagesConvo(currentConvo, action);
             if (action.state === 'START') {
                 // hardcoding some logic here for syncing history with server on START
@@ -76,9 +79,19 @@ const variables = (state = [], action) => {
     }
 };
 
+const predictions = (state = [], action) => {
+    switch (action.type) {
+        case types.UPDATE_PREDICTIONS:
+            return action.predictions;
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
     conversation,
     variables,
+    predictions,
     routing
 });
 

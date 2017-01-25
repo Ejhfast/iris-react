@@ -14,6 +14,13 @@ export function addMessage(message) {
     };
 }
 
+export function hint(message) {
+    return {
+        type: types.HINT,
+        ...message
+    };
+}
+
 export function hideConversation(id) {
     return {
         type: types.HIDE_CONVERSATION,

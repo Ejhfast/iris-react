@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Conversation from '../components/Conversation';
+import PredictionStrip from '../components/PredictionStrip';
 import InputBox from './InputBox';
 import { postMessages, getVariables, getHistory, setHistory } from '../api_calls/python';
 
@@ -52,6 +53,7 @@ class ConversationPane extends Component {
                 })}
                 <Conversation key={this.props.convo.id} messages={this.props.messages} title={this.props.convo.title} args={this.props.args} id={this.props.convo.id} hidden={this.props.convo.hidden} />
             </div>
+            <PredictionStrip />
             <InputBox />
         </div>;
 }
