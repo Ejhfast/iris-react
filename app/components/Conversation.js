@@ -14,7 +14,7 @@ class Conversation extends Component {
             <Title text={this.props.title} args={this.props.args} id={this.props.id}/>
             {this.props.messages.map(message => {
                 let content;
-                console.log(message.text);
+                console.log('INCOMING', message.text);
                 if(typeof message.text === 'object' && message.text.type === 'image') {
                     content = <VisualMessage key={message.id} origin={message.origin} content={message.text.value} hidden={this.props.hidden}/>;
                 } else if (typeof message.text === 'object' && message.text.type === 'data') {

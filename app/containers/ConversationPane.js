@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Conversation from '../components/Conversation';
 import PredictionStrip from '../components/PredictionStrip';
-import InputBox from './InputBox';
+import { InputBox } from './InputBox';
 import { postMessages, getVariables, getHistory, setHistory } from '../api_calls/python';
 
 // const flatten = list => list.reduce(

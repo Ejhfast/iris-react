@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 let RightPane = ({ variables }) =>
     <div className="right_pane">
         <div className="subtitle">IrisML</div>
-        <div className="snippet">A basic prototype, built with React and Reduct. More will appear here soon.</div>
+        <div className="snippet">A basic prototype, built with React and Redux. More will appear here soon.</div>
         <div className="variableTable">
             <div className="title">Current Variables</div>
             <ul>

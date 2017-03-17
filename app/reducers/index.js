@@ -88,10 +88,40 @@ const predictions = (state = [], action) => {
     }
 };
 
+const inputHistory = (state = {'history': [], 'currId': null, 'showHistory': false }, action) => {
+    let newId;
+    switch (action.type) {
+        case types.ADD_INPUT_HISTORY:
+            newId = state.currId;
+            if (state.history.length === 0 && newId === null) {
+                newId = 0;
+            }
+            return {...state, 'history': [...state.history, action.message], 'currId': newId};
+        case types.MOVE_INPUT_HISTORY:
+            if (state.history.length === 0) {
+                return state;
+            }
+            newId = state.currId || 0;
+            if (action.direction === 'up') {
+                if (newId < (state.history.length - 1)) {
+                    newId += 1;
+                }
+            } else {
+                if (newId >= 1) {
+                    newId -= 1;
+                }
+            }
+            return {...state, 'currId': newId };
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
     conversation,
     variables,
     predictions,
+    inputHistory,
     routing
 });
 
